@@ -1,4 +1,4 @@
-package com.cmgcode.dailies
+package com.cmgcode.dailies.themondrianpuzzle
 
 import org.junit.Test
 

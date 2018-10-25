@@ -1,17 +1,15 @@
-package com.cmgcode.dailies
+package com.cmgcode.dailies.wordfunnel1
 
-import com.cmgcode.dailies.WordFunnel1.getAllParentWords
-import com.cmgcode.dailies.WordFunnel1.getBuildableWords
-import com.cmgcode.dailies.WordFunnel1.isOneLetterRemoved
-import com.cmgcode.dailies.WordFunnel1.getWordList
+import com.cmgcode.dailies.wordfunnel1.WordFunnel1.Companion.getWordList
+import com.cmgcode.dailies.wordfunnel1.WordFunnel1.Companion.isOneLetterRemoved
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-//Challenge - https://www.reddit.com/r/dailyprogrammer/comments/98ufvz/20180820_challenge_366_easy_word_funnel_1/
-
 class WordFunnel1Test {
+
+    private val wordFunnel = WordFunnel1()
 
     @Test
     fun canRetrieveWordList(){
@@ -20,7 +18,7 @@ class WordFunnel1Test {
         assertTrue(wordList.containsAll(listOf("aa", "aah", "miscellaneousnesses")))
     }
 
-    @Test
+    @Test // Funnel
     fun canDetermineIfOneLetterDifferent(){
         assertTrue(isOneLetterRemoved("leave", "eave"))
         assertTrue(isOneLetterRemoved("reset", "rest"))
@@ -30,17 +28,16 @@ class WordFunnel1Test {
         assertFalse(isOneLetterRemoved("skiff", "ski"))
     }
 
-    @Test
+    @Test // Bonus 1
     fun canGetBuildableWords(){
-        assertTrue(getBuildableWords("dragoon").containsAll(listOf("dragon")))
-        assertTrue(getBuildableWords("boats").containsAll(listOf("oats", "bats", "bots", "boas", "boat")))
-        assertTrue(getBuildableWords("affidavit").isEmpty())
-
+        assertTrue(wordFunnel.getBuildableWords("dragoon").containsAll(listOf("dragon")))
+        assertTrue(wordFunnel.getBuildableWords("boats").containsAll(listOf("oats", "bats", "bots", "boas", "boat")))
+        assertTrue(wordFunnel.getBuildableWords("affidavit").isEmpty())
     }
 
-    @Test(timeout = 5000)
+    @Test(timeout = 2000) // Bonus 2
     fun canDetermineAllParentWords(){
-        assertEquals(getAllParentWords().size, 28)
+        assertEquals(wordFunnel.getWordsWithQuantityOfChildren(5).size, 28)
     }
 
 }
