@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<GlobalConfig version="2">
+    <ActiveSubscriptions>
+        <Subscription
+                program="TIG_REES"
+                fieldworker="314">
+            <Subscription
+                    program="ELU"
+                    fieldworker="3830"/>
+        </Subscription>
+    </ActiveSubscriptions>
+    <InactiveSubscriptions>
+        <Subscription
+                program="ELU"
+                fieldworker="3830">
+            Test text
+        </Subscription>
+        <Subscription
+                program="DATAFORCE"
+                fieldworker="728"/>
+    </InactiveSubscriptions>
+</GlobalConfig>
